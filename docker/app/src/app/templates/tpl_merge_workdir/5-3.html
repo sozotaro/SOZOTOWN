@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サンプル5_3</title>
+    <link rel="stylesheet" href="../../public/css/reset.css" />
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <style>
+
+      .label5-3 {
+          padding: 10px 0;
+          border-top: 1px solid #D6D6D6;
+      }
+
+      .label5-3 form label {
+          display: block;
+          padding-bottom: 5px;
+      }
+
+      .label5-3form input {
+          width: 100%;
+      }
+
+      .label5-3-1{
+        padding: 10px 0;
+        border-top: 1px solid #D6D6D6;  
+        border-bottom: 1px solid #D6D6D6; 
+      }
+
+      .p53{
+        font-size: 14px; 
+        padding-top: 30px; 
+        padding-bottom: 15px;
+      }
+
+
+      .p531{
+        font-size: 10px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container_2">
+      <h1>パスワード再設定</h1>
+
+      <p class="p53">
+        新しいパスワードを入力し、「パスワードを再設定する」ボタンをクリックしてください。
+      </p>
+
+ 
+
+        <div class="label5-3">
+          <form action="" method="POST">    
+              <label>新しいパスワード：</label>
+              <input type="text" name="name">
+              <p>エラーメッセージ</p>
+          </form>
+        </div>
+
+      
+
+        <div class="label5-3-1">
+          <form action="" method="POST">    
+              <label>新しいパスワード：(確認)</label>
+              <input type="text" name="name">
+              <p>パスワードが一致しません</p>
+          </form>
+        </div>
+
+   
+
+        <div class="btnArea">
+          <button onclick="location.href=''">
+            <p class="p531">パスワード再設定する</p>
+          </button>
+        </div>
+
+
+
+
+
+    </div>
+  </body>
+</html>

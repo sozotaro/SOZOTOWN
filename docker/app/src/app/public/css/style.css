@@ -1,0 +1,1240 @@
+body {
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+
+}
+/* --------------------★最終調整CSS★-------------------- */
+.validate_msg {
+  color: #a9a9a9;
+  font-size: medium;
+}
+.err_msg {
+  color: #ff0000;
+  font-size: medium;
+}
+.required_msg {
+  color: #ff4500;
+  font-size: x-small;
+}
+.mypage:hover {
+  cursor: pointer;
+}
+.nav_item {
+  background-color: #000000;
+}
+
+/* --------------------★ボタンまとめ★-------------------- */
+
+/* ボタンの外枠が表示されません…なんで？ */
+.btnArea button {
+  display: inline-block;
+  border: 1px solid #d6d6d6;
+  background-color: #fff;
+  text-align: center;
+  color: #000;
+  width: 108px;
+  height: 36px;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 50%);
+}
+.btnArea button:hover {
+  box-shadow: none;
+  transform: scale(0.99, 0.99) translateY(2px);
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+}
+
+.btn_eno {
+  text-decoration: none;
+  width: 100%;
+  max-width: 100px;
+  padding: 10px 10px;
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: black;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  margin: 10px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 50%);
+}
+.btn_eno:hover {
+  box-shadow: none;
+  transform: scale(0.99, 0.99) translateY(2px);
+}
+
+/* --------------------★メニューホバーまとめ★-------------------- */
+
+.scroll-nav {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  padding: 0;
+}
+
+.scroll-nav ul {
+  min-width: 600px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  list-style: none;
+  padding-right: 25px; 
+}
+
+.scroll-nav ul li:hover {
+  background: aliceblue; 
+  /*マウスホバー時の背景色 */
+}
+.scroll-nav ul li a {
+ display: inline-block;
+ color: #fff; 
+ text-decoration: none;
+}
+
+/* --------------------★アニメーションまとめ★-------------------- */
+
+@keyframes anime {
+  0% {opacity: 0;
+  }
+  8% {opacity: 1;
+  }
+  17% {opacity: 1;
+  }
+  25% {opacity: 0;transform: scale(1.2);z-index:9;
+  }
+  100% { opacity: 0 }
+}
+
+@-webkit-keyframes anime {
+  0% {opacity: 0;
+  }
+  8% {opacity: 1;
+  }
+  17% {opacity: 1;
+  }
+  25% {opacity: 0;-webkit-transform: scale(1.2);z-index:9;
+  }
+  100% { opacity: 0 }
+}
+
+/* --------------------★ヘッダーのnavまとめ★-------------------- */
+
+.header nav {
+  color: blanchedalmond;
+  margin-left: auto;
+}
+
+.header ul {
+  color: blanchedalmond;
+  display: flex;
+}
+
+/* --------------------★ヘッダーのimgまとめ★-------------------- */
+
+.header_img:hover {
+  /* transformは変形プロパティ。値にscaleを指定すると拡大縮小することができる。 */
+  transform: scale(1.2);
+}
+
+.header_icon:hover {
+  /* transformは変形プロパティ。値にscaleを指定すると拡大縮小することができる。 */
+  transform: scale(1.2);
+}
+
+/* --------------------★フッターまとめ★-------------------- */
+
+.footer {
+  color: floralwhite;
+  background-color: darkgrey;
+  justify-content: center;
+  display: flex;
+  height: 60px;
+  width: 100%;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+/* --------------------★LABELまとめ★-------------------- */
+
+.label {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* --------------------★nav_3-1まとめ★-------------------- */
+
+.nav_3-1 {
+  padding: 0;
+}
+
+ul.nav_3-1_center {
+  text-align: center;
+  font-size: 15px;
+}
+
+.nav_3-1_center>li {
+  display: inline;
+  padding: 0 10px;
+  border-right: #ddd 1px solid;
+  padding: 0;
+}
+
+.nav_3-1_center>li:last-child {
+  border-right: none;
+}
+
+/* --------------------★商品名と値段の枠まとめ★-------------------- */
+
+.item_list{
+  text-align: center;
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.item_list:before, .item_list:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+}
+
+.item_list:before {
+  left: 7px;
+}
+
+.item_list:after {
+  right: 7px;
+}
+
+.item_price>p{
+  text-align: center;
+}
+
+/* --------------------★3-1検索まとめ★-------------------- */
+
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+/* --------------------★ページネーションまとめ★-------------------- */
+
+.pagination{
+  text-align: center;
+  margin: 10px;
+}
+
+.pagination li {
+  display: inline-block;
+  height:40px;line-height:40px;
+  width:40px;text-align:center;
+  border:1px #ccc solid;color:#000053;
+  border-radius: 5px / 5px;
+  }
+  
+  .pagination .pre {background-color:#ccc;color:#333;}
+  .pagination .this {background-color:#777;color:#fff;}
+  .pagination li a{display:block;text-decoration: none;}
+  .pagination li a:hover {color: #fff;text-decoration: none;background-color: #003396;}
+
+  /* --------------------★商品表示まとめ★-------------------- */
+
+  .cart_main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 60px;
+    flex-direction: column;
+  }
+
+  .cart_img > a > img {
+    max-width: 100%;
+  }
+
+  /* --------------------★商品説明まとめ★-------------------- */
+
+  .cart_ex > h2 {
+    font-size: 30px;
+  }
+  
+  .cart_ex > p {
+    margin: 10px 0;
+  }
+
+  /* --------------------★サイズ状態まとめ★-------------------- */
+  
+  .size_condition {
+    display: flex;
+    padding: 0;
+    font-size: 20px;
+    margin: 10px 0;
+    flex-direction: column;
+  }
+
+  /* --------------------★商品値段まとめ★-------------------- */
+
+  .price_btns {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0 0px;
+    font-size: 15px;
+  }
+
+  .price_btns > p {
+    font-size: 15px;
+  }
+
+  /* --------------------★商品値段まとめ★-------------------- */
+
+hr {
+  font-size: 25px;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 8px;
+}
+
+ul {
+  list-style: none;
+}
+
+div {
+  padding: 0px 10px;
+}
+
+select {
+  padding: 0.6rem;
+}
+
+input,
+select {
+  border: 1px solid #d6d6d6;
+}
+
+/* inputのnumberの矢印を消す */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form2 input[type="text"],
+.form2 input[type="number"],
+.form2 input[type="email"],
+.form2 input[type="password"] {
+  padding: 5px;
+  width: 73%;
+}
+
+.container {
+  margin: 30px;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.container > h1 {
+  font-size: 25px;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 8px;
+}
+
+.container_2 {
+  margin: 30px;
+  padding-bottom: 60px;
+}
+
+.container_2 > h1 {
+  font-size: 25px;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.howto_pay > h1 {
+  font-size: 25px;
+  border-bottom: 1px solid #d6d6d6;
+  padding: 8px;
+  text-align: center;
+}
+
+.howto_pay > h2 {
+  font-size: 20px;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 8px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.howto_pay > p {
+  font-size: 15px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* デザインA（スマートフォン） */
+/* メディアクエリ の記述なし。*/
+
+.form2 > h2 {
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+.header {
+  color: blanchedalmond;
+  background-color: black;
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.header_center {
+  color: blanchedalmond;
+  background-color: black;
+  justify-content: center;
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.header ul li {
+  color: blanchedalmond;
+  margin-left: 10px;
+}
+
+.header_img:hover {
+  /* transformは変形プロパティ。値にscaleを指定すると拡大縮小することができる。 */
+  transform: scale(1.1);
+}
+
+.header_icon:hover {
+  /* transformは変形プロパティ。値にscaleを指定すると拡大縮小することができる。 */
+  transform: scale(1.1);
+}
+
+.form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.form2 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.item {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form2 input[type="text"],
+.form2 input[type="number"],
+.form2 input[type="email"],
+.form2 input[type="password"] {
+  padding: 5px;
+  width: 100%;
+}
+
+.nav-wrap {
+  position: relative;
+  padding: 10px 0;
+}
+
+.scroll-nav ul {
+  min-width: 530px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  list-style: none;
+  padding-right: 25px;
+}
+
+.scroll-nav ul li {
+  float: left;
+  width: 100px; 
+  text-align: center;
+}
+
+.next-btn { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px; 
+  height: 40px; 
+  line-height: 60px;
+  background: #fff;
+}
+
+.item_main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px;
+  flex-direction: column;
+}
+
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.cart_img {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  padding: 10px 0;
+}
+
+.cart_ex {
+  padding: 0px 15px;
+  width: 100%;
+}
+
+.size_condition {
+  display: flex;
+  padding: 0;
+  font-size: 15px;
+  margin: 10px 0;
+  flex-direction: row;
+}
+
+.size_condition > p {
+  margin-right: 10px;
+}
+
+.cart_ex > .btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ーーーーーーーーーーーーーーーーーーーーー01/21ここですーーーーーーーーーーーーーーーーーーー */
+
+.price_btns {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0 0px;
+}
+
+.price_btns > p {
+  font-size: 15px;
+}
+
+.fixed_btn {
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  padding: 0 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 60px;
+}
+
+.fixed_btn > a {
+  text-decoration: none;
+  width: 100%;
+  max-width: 150px;
+  padding: 15px 0;
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: black;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  margin: 10px;
+}
+
+.fixed_btn > p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* --------------------3-5.html-------------------- */
+
+.ue {
+  display: flex;
+  border-bottom: 1px solid #d6d6d6;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  font-size: 15px;
+}
+
+/* --------------------2-1.html-------------------- */
+
+.main_imgBox {
+  margin: 15px 0;
+  height: 150px;
+  overflow: hidden;
+  position: relative; }
+
+.main_logo {
+  z-index:11;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50%;
+  height:auto;
+}
+
+.main_img {
+  z-index:10;
+  opacity: 0;
+  width: 100%;
+  height: 680px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 36s 0s infinite;
+  animation: anime 36s 0s infinite; }
+
+  .main_img:nth-of-type(2) {
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s; }
+
+  .main_img:nth-of-type(3) {
+    -webkit-animation-delay: 12s;
+    animation-delay: 12s; }
+
+  .main_img:nth-of-type(4) {
+    -webkit-animation-delay: 18s;
+    animation-delay: 18s; }
+
+  .main_img:nth-of-type(5) {
+    -webkit-animation-delay: 24s;
+    animation-delay: 24s; }
+
+  .main_img:nth-of-type(6) {
+    -webkit-animation-delay: 30s;
+    animation-delay: 30s; }
+
+
+
+/* -------------------------田辺さん------------------------- */
+
+/* ↓↓↓ [1-3.html][5-2.html] ここから ↓↓↓*/
+.setA h1 {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.setA p {
+  font-size: 15px;
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.caption {
+  margin-top: 20px;
+}
+
+.caption img {
+  vertical-align: middle;
+  display: inline-block;
+}
+.caption span {
+  display: inline-block;
+  font-size: 11px;
+}
+
+/* ↓↓↓ [2-4.html][3-2.html]ここから ↓↓↓*/
+
+.subTitle {
+  text-align: center;
+}
+.subTitle > h1 {
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 6px;
+}
+
+.subTitle > img {
+  width: 200px;
+  height: 250px;
+  margin-top: 26px;
+  margin-bottom: 26px;
+}
+
+.subTitle > p {
+  font-size: 8pt;
+  margin-bottom: 26px;
+}
+
+.itemDetail {
+  border-top: 1px solid #d6d6d6;
+  padding-top: 20px;
+}
+
+.itemDetail > h1 {
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 18pt;
+  color: #2ebee2;
+}
+
+.itemDetail > span {
+  display: inline-block;
+  font-size: 15px;
+  color: #2ebee2;
+}
+
+.itemDetail > p {
+  padding-top: 20px;
+}
+
+.sizeSelect {
+  font-size: 15px;
+}
+
+.sizeSelect > select {
+  margin-top: 20px;
+  border: 1px solid #d6d6d6;
+  height: 30px;
+  margin-bottom: 6px;
+}
+
+/* ↑↑↑ [2-4.html][3-2.html] ここまで ↑↑↑ */
+
+/* ↑↑↑ [1-3.html][5-2.html] ここまで ↑↑↑ */
+
+/* ↓↓↓ [4-1.html] ここから ↓↓↓*/
+
+article.guide {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+article.guide h1 {
+  font-size: 100%;
+}
+
+article.guide p {
+  font-size: 75%;
+  border-bottom: 2px dotted #d6d6d6;
+  padding-bottom: 15px;
+}
+
+/* ↑↑↑ [4-1.html] ここまで ↑↑↑ */
+
+/* --------------------------以下メディアスクリーン-------------------------- */
+
+/* デザインB（タブレット） */
+@media screen and (min-width: 600px) {
+  /* タブレット用レイアウト 600px以上の範囲に収めるデザインはこの中に記述*/
+
+  .form2 > h2 {
+    font-size: 25px;
+    padding: 10px 10px 10px 20px;
+  }
+
+  div {
+    padding: 0px 20px;
+  }
+
+  .header {
+    color: blanchedalmond;
+    background-color: black;
+    display: flex;
+    height: 70px;
+    align-items: center;
+  }
+
+  .header_center {
+    color: blanchedalmond;
+    background-color: black;
+    justify-content: center;
+    display: flex;
+    height: 70px;
+    align-items: center;
+  }
+
+  .header h1 img {
+    width: 14em;
+  }
+
+  .header ul li {
+    color: blanchedalmond;
+    margin-left: 20px;
+  }
+
+  /* --------------------2-5.html、3-4.html-------------------- */
+
+  .form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
+  .form2 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
+  .item {
+    margin-bottom: 20px;
+    width: auto;
+  }
+
+  .label2 {
+    display: inline-block;
+    width: 25%;
+  }
+
+.nav-wrap {
+  position: relative;
+  padding: 20px 0;
+}
+
+
+.scroll-nav ul li {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.next-btn { /* 右側に固定する部分 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px; /* 固定部分の幅 */
+  height: 40px; /* メニューの高さに合わせる */
+  line-height: 68px;
+  background: #fff;
+  display: none;
+}
+
+.item_all{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.item_main:after{
+	content:"";
+	display:block;
+	width: 32%;
+	height:0;
+}
+.item_main{
+	width: 50%;
+	margin-bottom: 2%;
+}
+
+  .cart_img {
+    text-align: center;
+    width: 100%;
+  }
+
+  .cart_ex {
+    padding: 0 40px;
+    width: 100%;
+  }
+
+  .cart_ex > .btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fixed_btn {
+    text-align: center;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    padding: 0 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .fixed_btn > a {
+    text-decoration: none;
+    width: 100%;
+    max-width: 150px;
+    padding: 15px 0;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: black;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    margin: 10px;
+  }
+
+  .fixed_btn > p {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+/* --------------------3-5.html-------------------- */
+
+.ue {
+  display: flex;
+  border-bottom: 1px solid #d6d6d6;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  font-size: 20px;
+}
+}
+
+/* --------------------2-1.html-------------------- */
+
+.main_imgBox {
+  margin: 15px 0;
+  height: 200px;
+  overflow: hidden;
+  position: relative; }
+
+.main_logo {
+  z-index:11;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50%;
+  height:auto;
+}
+
+.main_img {
+  z-index:10;
+  opacity: 0;
+  width: 100%;
+  height: 680px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 36s 0s infinite;
+  animation: anime 36s 0s infinite; }
+
+  .main_img:nth-of-type(2) {
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s; }
+
+  .main_img:nth-of-type(3) {
+    -webkit-animation-delay: 12s;
+    animation-delay: 12s; }
+
+  .main_img:nth-of-type(4) {
+    -webkit-animation-delay: 18s;
+    animation-delay: 18s; }
+
+  .main_img:nth-of-type(5) {
+    -webkit-animation-delay: 24s;
+    animation-delay: 24s; }
+
+  .main_img:nth-of-type(6) {
+    -webkit-animation-delay: 30s;
+    animation-delay: 30s; }
+
+
+/* デザインC(PC) */
+@media screen and (min-width: 1025px) {
+  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+
+  .form2 > h2 {
+    font-size: 25px;
+    padding: 10px 10px 10px 30px;
+  }
+
+  div {
+    padding: 0 30px;
+  }
+
+  .header {
+    color: blanchedalmond;
+    background-color: black;
+    /* background-color: blue; */
+    display: flex;
+    height: 80px;
+    align-items: center;
+  }
+
+  .header_center {
+    color: blanchedalmond;
+    background-color: black;
+    justify-content: center;
+    display: flex;
+    height: 80px;
+    align-items: center;
+  }
+
+  .header h1 img {
+    width: 14em;
+  }
+
+  .header ul li {
+    color: blanchedalmond;
+    margin-left: 30px;
+  }
+
+  /* --------------------2-5.html、3-4.html-------------------- */
+
+  .form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    font-size: 25px;
+  }
+
+  .form2 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    font-size: 25px;
+  }
+
+  .item {
+    margin-bottom: 20px;
+    width: auto;
+  }
+
+  .label2 {
+    display: inline-block;
+    width: 25%;
+  }
+
+  
+/* --------------------3-1.html-------------------- */
+
+.nav_3-1_center>li {
+  display: inline;
+  padding: 0 10px;
+  border-right: #ddd 1px solid;
+  padding: 0;
+  font-size:20px;
+}
+
+.nav-wrap {
+  position: relative;
+  padding: 30px 0;
+}
+
+.next-btn { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px; 
+  height: 40px; 
+  line-height: 68px;
+  background: #fff;
+}
+
+.item_all{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.item_main:after{
+	content:"";
+	display:block;
+	width: 33%;
+	height:0;
+}
+
+.item_main{
+  width: 32%;
+}
+
+.item_main>div{
+  font-size: 20px;
+}
+
+
+  /* --------------------3-3.html、3-4.html、3-5.html-------------------- */
+
+  .cart_main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 60px;
+    flex-direction: row;
+  }
+
+  .cart_img > a > img {
+    max-width: 80%;
+    min-width: 150px;
+  }
+
+  .cart_img {
+    text-align: center;
+    margin: 15px 0;
+    position: relative;
+    line-height: 1.4;
+    display: inline-block;
+  }
+  
+  .cart_img:before, .cart_img:after { 
+    content:'';
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    display: inline-block;
+  }
+  
+  .cart_img:before {
+    border-left: solid 1px black;
+    border-top: solid 1px black;
+    top:0;
+    left: 0;
+  }
+  
+  .cart_img:after {
+    border-right: solid 1px black;
+    border-bottom: solid 1px black;
+    bottom:0;
+    right: 0;
+  }
+
+  .cart_ex {
+    padding: 0 40px;
+    width: 50%;
+    margin: auto;
+  }
+
+  .cart_ex > h2 {
+    font-size: 40px;
+  }
+
+  .cart_ex > p {
+    margin: 10px 0;
+  }
+
+  .size_condition > p {
+    max-width: 50%;
+  }
+
+  .cart_ex > .btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fixed_btn {
+    text-align: center;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    padding: 0 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .fixed_btn > a {
+    text-decoration: none;
+    width: 100%;
+    max-width: 150px;
+    padding: 15px 0;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: black;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    margin: 10px;
+  }
+
+  .fixed_btn > p {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  /* --------------------3-5.html-------------------- */
+
+.ue {
+  display: flex;
+  border-bottom: 1px solid #d6d6d6;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  font-size: 25px;
+  }
+
+  /* --------------------2-1.html-------------------- */
+
+.main_imgBox {
+  margin: 15px 0;
+  height: 250px;
+  overflow: hidden;
+  position: relative; }
+
+.main_logo {
+  z-index:11;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50%;
+  height:auto;
+}
+
+.main_img {
+  z-index:10;
+  opacity: 0;
+  width: 100%;
+  height: 680px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 36s 0s infinite;
+  animation: anime 36s 0s infinite; }
+
+  .main_img:nth-of-type(2) {
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s; }
+
+  .main_img:nth-of-type(3) {
+    -webkit-animation-delay: 12s;
+    animation-delay: 12s; }
+
+  .main_img:nth-of-type(4) {
+    -webkit-animation-delay: 18s;
+    animation-delay: 18s; }
+
+  .main_img:nth-of-type(5) {
+    -webkit-animation-delay: 24s;
+    animation-delay: 24s; }
+
+  .main_img:nth-of-type(6) {
+    -webkit-animation-delay: 30s;
+    animation-delay: 30s; }
+}
+

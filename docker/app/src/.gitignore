@@ -1,0 +1,16 @@
+# IDE管理用
+/.idea/*
+
+# 環境変数
+/.env
+
+# Smarty関係
+/app/cashe/*
+/app/templates_c/*
+
+# composer
+
+/vendor/*
+
+# テストファイル
+/adminer.php

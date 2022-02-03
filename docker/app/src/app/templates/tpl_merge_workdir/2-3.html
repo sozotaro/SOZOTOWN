@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注文詳細</title>
+    <link rel="stylesheet" href="../../public/css/reset.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+    	.itemDetail2 h2 {
+    		padding: 1rem 0;
+    		text-align: left;
+    		font-weight: bold;
+    	}
+
+    	.itemDetail2 ul {
+    		/*width: 93.1%;*/
+    		display: flex;
+    		margin-bottom: 1rem;
+    	}
+
+    	.itemDetail2 ul li:first-of-type {
+    		padding-right: 1rem;
+    	}
+
+    	.itemDetail2 table {
+    		clear: both;
+    	}
+
+    	.itemDetail2 table td { 
+    		padding-bottom: 0.3rem;
+    	}
+
+    	.itemDetail2 p {
+    		text-align: right;
+    		font-weight: bold;
+    	}
+
+    	#target {
+    		font-weight: bold;
+    	}
+
+    	.targetList {
+    		color: #90D3ED; 
+    		line-height: 1.9;
+    		font-size: 0.9rem;
+    	}
+    </style>
+
+<body>
+    <div class="container">
+        <div class="subTitle">
+            <h1>
+                購入履歴
+            </h1>
+        </div>
+        <div class="itemDetail2">
+            <h2>これまでに購入された商品</h2>
+            <ul id="target">
+            	<li>購入日の新しい順</li>
+            	<li class="targetList">購入日の古い順</li>
+        	</ul>
+
+            <table>
+            	<tr>
+            		<td>注文ID：</td><td></td>
+            	</tr>
+            	<tr>
+            		<td>注文日：</td><td></td>
+            	</tr>
+            	<tr>
+            		<td>商品名：</td><td></td>
+            	</tr>
+            </table>
+
+			<p>ご注文金額：&yen（税込み）</p>
+
+        </div>
+
+        <div class="btnArea">
+            <button onclick="location.href=''">
+                戻る
+            </button>
+        </div>
+    </div>
+
+    <script>
+			$('#target').click(function() {
+				$('#target li').toggleClass("targetList");
+			})
+    </script>
+</body>
+</html>

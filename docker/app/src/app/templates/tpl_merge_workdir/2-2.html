@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サンプル2-2</title>
+    <link rel="stylesheet" href="../../public/css/reset.css" />
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <style>
+
+    .box2-2{
+        padding: 10px;
+        display: flex;
+        justify-content:space-between ;
+    }
+
+
+    #a{
+        display: flex;
+        ustify-content: space-evenly;
+        align-content: flex-start;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+
+    .arrow2-2{
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    .user2-2img{
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .user2-2{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .right2-2{
+        text-align: right;
+    }
+
+    #rrr{
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px; 
+        box-sizing: border-box;
+        font-size: 15px;
+    /* background-color: red;*/
+    }   
+
+
+    .font2-2{
+        font-size: 25px;
+        text-align: center; 
+        padding-top: 40px;
+        padding-bottom: 0px; 
+        font-weight: bold;
+    }
+
+
+    .hr2-2{
+        padding: 0px ;
+    }
+
+    .btnArea2-2{
+        font-size: 12px;
+        padding-top: 10px;
+        color: #808080;
+    }
+
+
+
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <div class="container_2"> 
+        <h1>マイページ</h1>    
+        <div class="user2-2">
+            <div id=a>
+                <img class="user2-2img" src="../../public/image/user.png" alt="">
+                <div class="right2-2">
+                    <form class="form" id="rrr" action="">
+                        <div class="item">
+                            <label class="label" for="name" name="name">：$name_date</label>
+                        </div>
+                        <div>
+                            <a href="">ログアウト</a> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      
+      <hr class="hr2-2">
+        <div class="box2-2">
+          <p>ご注文の情報</p>
+        </div>
+
+      <hr class="hr2-2">  
+            <div class="box2-2">
+               <a href="">購入履歴</a>   
+                <div class="box2-2-a">
+                    <a href=""><img class="arrow2-2" src="../../public/image/arrow.png" alt=""></a>
+                </div>
+            </div>
+        <hr class="hr2-2"> 
+            <div class="box2-2">
+                <a href="">会員情報明細</a>              
+                <div class="box2-2-a">
+                    <a href=""><img class="arrow2-2" src="../../public/image/arrow.png" alt=""></a>
+                </div>
+            </div>
+  
+        <hr class="hr2-2"> 
+
+        <div class="btnArea2-2">
+            <button onclick="location.href=''">
+                <p>退会の手続き</p>
+            </button>
+        </div>
+    </div>
+  </body>
+</html>

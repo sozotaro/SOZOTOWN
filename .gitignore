@@ -1,0 +1,6 @@
+docker/app/log/
+docker/db/data/
+docker/db/log/
+docker/proxy/log/
+.idea/*
+*.log

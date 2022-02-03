@@ -1,0 +1,80 @@
+USE sozo;
+
+SET CHARACTER_SET_CLIENT = utf8;
+SET CHARACTER_SET_CONNECTION = utf8;
+
+-- 複数SQL定義のために、SQLの区切り文字を ; から // に変更
+DELIMITER //
+
+-- customersよりemail_addressを取得する
+-- 引数：customer_id
+-- 戻り値：メールアドレス
+
+create procedure getEmailAaddressProc(IN in_customer_id int(8))
+begin
+	select email_address from customers where customer_id = in_customer_id;
+end
+//
+
+
+-- Order.php
+-- 全受注履歴の取得
+create procedure getAllOrders()
+begin
+	select * from orders;
+end
+//
+
+-- 新規データ作成
+create procedure create(IN in_customer_id int(8), IN in_subtotal int(12), IN in_consumption_tax int(8), IN in_charge int(4), IN in_delivery_id int(8), IN in_status_id int(8), IN in_ordered_at datetime)
+begin
+	insert into orders (customer_id, subtotal, consumption_tax, charge, delivery_id, status_id , ordered_at) values (in_customer_id, in_subtotal, in_consumption_tax, in_charge, in_delivery_id, in_status_id, in_ordered_at);
+end
+//
+
+-- Product.php
+-- 商品一覧を取得
+create procedure getAllProducts()
+begin
+	select * from products;
+end
+//
+
+-- 商品詳細を取得
+create procedure getProduct(IN in_product_id int(8))
+begin
+	select * from products where product_id = in_product_id;
+end
+//
+
+-- 商品を検索する
+create procedure searchProducts(IN in_product_name varchar(50))
+begin
+	set @item = '%'.$in_product_name.'%';
+	select * from products where product_name LIKE @item;
+end
+//
+
+-- 新しい商品マスタを登録する
+create procedure createProduct(IN in_product_name varchar(50), IN in_category_id int(4), IN in_product_explanation varchar(300))
+begin
+	insert into products (product_name, category_id, product_explanation) values (in_product_name, in_category_id, in_product_explanatio);
+end
+//
+
+-- Stock.php
+-- 全在庫情報の取得
+create procedure getAllStocksProc()
+begin
+	select * from stocks;
+end
+//
+
+-- 新しい在庫を登録する
+create procedure createStockProc(IN in_product_name varchar(50), IN in_size_id int(2), IN in_condition_id int(8), IN in_price int(10), IN in_stock_quantity int(8))
+begin
+	insert into stocks (product_id, size_id, condition_id, price, stock_quantity) values (in_product_name, in_size_id, in_condition_id, in_price, in_stock_quantity);
+end
+//
+
+delimiter ;

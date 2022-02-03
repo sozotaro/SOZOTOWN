@@ -1,0 +1,240 @@
+USE sozo;
+
+SET CHARACTER_SET_CLIENT = utf8;
+SET CHARACTER_SET_CONNECTION = utf8;
+
+-- 複数SQL定義のために、SQLの区切り文字を ; から // に変更
+DELIMITER //
+
+-- 顧客マスタ用プロシージャ
+    -- アドレス、ニックネームの変更
+    create procedure updateCustomerProc(IN in_customer_id int(8), IN in_email_address varchar(256), IN in_nickname varchar(128))
+    begin
+        declare EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING
+        begin
+            set @flag = false;
+        end;
+        -- エラー発生前の返り値宣言
+        set @flag = true;
+
+        -- 更新対象が存在するかの確認
+        select count(*) into @count from customers where customer_id = in_customer_id;
+
+        -- 対象が存在する場合のみ更新処理
+        if @count >= 1 then
+            update customers set email_address = in_email_address, nickname = in_nickname where customer_id = in_customer_id;
+        else
+            set @flag = false;
+        end if;
+        select @flag;
+    end
+    //
+
+-- 配送先マスタ用プロシージャ
+    -- 会員情報の取得
+    create procedure getDeliveryProc(in in_customer_id int(8))
+    begin
+        -- 取得処理
+        select name, name_kana, telephone_number, post_number, area_name, address from deliveries join areas on deliveries.area_id = areas.area_id where customer_id = in_customer_id;
+    end
+    //
+
+    -- 会員情報の変更
+    -- post_number も入れていい？
+    -- delivery_id もいる？
+    create procedure updateDeliveryProc(in in_delivery_id int(8), in in_customer_id int(8), in in_name varchar(20), in in_name_kana varchar(40), in in_telephone_number int(14), in in_post_number int(8), in in_area_id int(2), in in_address varchar(120))
+    begin
+        -- エラー発生時用のハンドラ
+        declare EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING
+        begin
+            set @flag = false;
+        end;
+        -- エラー発生前の返り値宣言
+        set @flag = true;
+
+        -- 更新対象が存在するかの確認
+        select count(*) into @count from deliveries where customer_id = in_customer_id and delivery_id = in_delivery_id;
+
+        -- 対象が存在する場合のみ更新処理
+        if @count >= 1 then
+            update deliveries set name = in_name, name_kana = in_name_kana, telephone_number = in_telephone_number, post_number = in_post_number, area_id = in_area_id, address = in_address where customer_id = in_customer_id and delivery_id = in_delivery_id;
+        else
+            set @flag = false;
+        end if;
+       -- 返り値の出力
+        select @flag;
+    end
+    //
+
+
+-- カート用プロシージャ
+    -- カートに商品を追加する
+    -- 在庫数量を確認するようにしています。問題あればご指摘お願いします
+    -- stock_id を sku_idに修正してます
+    create procedure addCartProc(IN in_customer_id int(8), IN in_sku_id int(8), IN in_quantity int(8))
+    begin
+        -- 返り値用のboolフラグ
+        set @flag = true;
+        -- SKUの在庫を取得
+        select stock_quantity into @stock_quantity from products_sku where sku_id = in_sku_id;
+        -- 在庫が注文数量より多ければ、カートに追加
+        IF in_quantity <= @stock_quantity THEN
+            insert into carts (customer_id, sku_id, quantity) values (in_customer_id, in_sku_id, in_quantity);
+        -- 在庫以上の注文をされた場合 返り値をfalse
+        ELSE
+            set @flag = false;
+        END IF;
+        select @flag;
+    end
+    //
+
+
+-- -- 商品一覧用
+--     -- products テーブルから、product_id一覧 を取得
+--     create procedure getAllProductIdProc()
+--     begin
+--         select product_id from products;
+--     end
+--     //
+
+--     -- sku テーブルから、在庫が1以上のもので一番安いものを表示
+--     create procedure getAllStocksProc(IN in_product_id int(8))
+--     begin
+--         -- 返り値用
+--         set @sku_id = 0;
+--         -- SKUの在庫idを取得
+--         select sku_id into @sku_id from products_sku where product_id = in_product_id and stock_quantity > 0 order by price asc limit 1;
+--         -- 在庫が 0 のみ or 商品自体が存在しない場合、0 を返す
+--         select @sku_id;
+--     end
+--     //
+
+
+
+
+
+
+
+
+
+
+-- -- ログイン用プロシージャ作成
+--     -- メールアドレスが合致した場合、ハッシュ化パスワードを返却する
+--     CREATE PROCEDURE login_proc(IN in_email_address VARCHAR(256))
+--     BEGIN
+
+--         -- ログインエラーの取得用にcustomer_idも取得
+--         select customer_id, password, password_locked_at into @customer_id, @password, @password_locked_at from customers where email_address = in_email_address;
+--         -- password_locked_at がnull じゃない＝ロックされた
+--         IF @password_locked_at != null  THEN
+--             -- 10分以上たっていれば、password_locked_at をnullにする
+--             IF @password_locked_at < cast(now() as datetime) - interval 10 minute THEN
+--                 update customers set password_locked_at = null where customer_id = @customer_id;
+--             -- 10分たつまでは、ロック状態
+--             ELSE
+--                 set @password = "";
+--             END IF;
+--         END IF;
+--         -- 出力
+--         select @password;
+
+--     END
+--     //
+
+--     -- ログイン成功時
+--     create procedure login_success_proc(IN in_email_address VARCHAR(256))
+--     begin
+--         -- customer_id, nickname 取得
+--         select customer_id, nickname from customers where email_address = in_email_address;
+--     end
+--     //
+
+--     -- ログイン失敗時
+--     create procedure login_failure_proc(IN in_email_address VARCHAR(256))
+--     begin
+--         select customer_id into @customer_id from customers where email_address = in_email_address;
+--         -- ログインエラー履歴テーブルに追加
+--         insert into login_errors (customer_id) values (@customer_id);
+
+--         select count(*) into @count from login_errors where customer_id = @customer_id and login_error_history_at >= cast(now() as datetime) - interval 10 minute;
+--         -- ログインエラーが多ければ、password_locked_at カラムを入力
+--         IF @count >= 5 THEN
+--             update customers set password_locked_at = cast(now() as datetime) where customer_id = @customer_id;
+--         END IF;
+
+--     end
+--     //
+
+-- -- ユーザー登録用プロシージャ
+--     -- 仮登録
+--     create procedure temp_register_proc(IN in_email_address VARCHAR(256), IN in_password VARCHAR(60), IN in_nickname VARCHAR(128), IN in_access_token CHAR(8), IN in_password_token VARCHAR(255))
+--     begin
+--         -- 仮登録判断フラグ
+--         set @flag = 1;
+--         -- email が登録済みでないか確認
+--         select customer_id into @customer_id from customers where email_address = in_email_address;
+--         -- email 登録済みなら失敗
+--         IF @customer_id != null THEN
+--             set @flag = 0;
+--         ELSE
+--             insert into customers (email_address, password, nickname) values (in_email_address, in_password, in_nickname);
+--             select customer_id into @customer_id from customers where email_address = in_email_address;
+--             insert into temporary_registrations (customer_id, access_token, password_token) values (@customer_id, in_access_token, in_password_token);
+--         END IF;
+--         -- 成功：1, emailが登録済み：0
+--         select @flag;
+--     end
+--     //
+
+--     -- 本登録、出力が 1 なら本登録成功、 0 なら失敗
+--     -- 入力値： email_address になってるけど、customer_id かもしれない
+--     create procedure register_proc(IN in_email_address VARCHAR(256), IN in_access_token CHAR(8), IN in_password_token VARCHAR(255))
+--     begin
+--         -- 本登録 判断フラグ。1なら登録、0なら失敗
+--         set @flag = 0;
+--         -- customer_id 取得
+--         select customer_id into @customer_id from customers where email_address = in_email_address;
+--         -- アクセストークン、パスワードトークン取得
+--         select access_token, password_token into @access_token, @password_token from temporary_registrations where customer_id = @customer_id;
+--         IF @access_token = in_access_token && @password_token = in_password_token THEN
+--             set @flag = 1;
+--         ELSE
+--             insert into customers (email_address, password, nickname) values (in_email_address, in_password, in_nickname);
+--             select customer_id into @customer_id from customers where email_address = in_email_address;
+--             insert into temporary_registrations (customer_id, access_token, password_token) values (@customer_id, in_access_token, in_password_token);
+--         END IF;
+--         select @flag;
+--     end
+--     //
+
+
+
+
+-- -- プロシージャ確認
+-- SHOW PROCEDURE STATUS;
+-- SHOW CREATE PROCEDURE login_procedure;
+
+-- -- プロシージャ呼び出し
+-- CALL login_procedure(1);
+
+-- -- プロシージャ削除
+-- DROP PROCEDURE login_procedure;
+
+
+
+-- -- for文サンプル
+-- delimiter //
+-- create procedure insert_users(in x int)
+-- begin
+--   declare i int default 0;
+--   while i < x do
+--     -- insert data は自由に適当にどうぞ
+--     insert into users (name, score) values (concat('name', i), ROUND(RAND() * 1000));
+--     set i = i + 1;
+--   end while;
+-- end
+-- //
+-- delimiter ;
+
+-- call insert_users(10);
+DELIMITER ;

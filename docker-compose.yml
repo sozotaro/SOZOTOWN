@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./docker/app/src/app:/var/www/html/app
+      - ./docker/app/log:/var/log/apache2
+    working_dir: /var/www/html
+    ports:
+      - 18080:80
+      - 18443:443
+  db:
+#    M1MacでのDocker起動時はコメントアウトを解除
+#    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/log:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    ports:
+      - 13306:3306
