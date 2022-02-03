@@ -109,4 +109,4 @@
 4. ブラウザで確認
 
 # License
-"SOZOTOWN" is Confidential.
+https://choosealicense.com/no-permission/
