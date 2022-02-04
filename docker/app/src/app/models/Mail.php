@@ -107,7 +107,7 @@ class Mail
             $this->mail->Host       = 'smtp.gmail.com';  // SMTP サーバー(Gmail の場合これ)
             $this->mail->SMTPAuth   = true;              // SMTP認証を有効にする
             $this->mail->Username   = 'sumple@gmail.com'; // ユーザ名 (Gmail ならメールアドレス)
-            $this->mail->Password   = 'stagbeetle';      // パスワード
+            $this->mail->Password   = 'sumple';      // パスワード
             $this->mail->SMTPSecure = 'tls';             // 暗号化通信 (Gmail では使えます)
             $this->mail->Port       = 587;               // TCP ポート (TLS の場合 587)
 
